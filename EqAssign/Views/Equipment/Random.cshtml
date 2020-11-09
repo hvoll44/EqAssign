@@ -1,0 +1,25 @@
+﻿@model EqAssign.ViewModels.RandomEquipmentViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{ 
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+<h2 class=@className">@Model.Equipment.Name</h2>
+@if (Model.Customers.Count == 0)
+{
+    <text>No one has rented this equipment before.</text>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}

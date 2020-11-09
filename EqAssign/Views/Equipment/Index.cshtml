@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EqAssign.Models.Equipment>
+
+@{
+    ViewBag.Title = "Equipment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Equipment</h2>
+
+<table id="equipment" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Equipment</th>
+            <th>Model Type</th>
+            <th>In Stock</th>
+            <th>Remove from Inventory</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#equipment").DataTable({
+                ajax: {
+                    url: "/api/equipment",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "name",
+                        render: function (data, type, equipment) {
+                            return "<a href='/equipment/edit/" + equipment.id + "'>" + equipment.name + "</a>";
+                        }
+                    },
+                    {
+                        data: "modelType.name"
+                    },
+                    {
+                        data: "stock"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-equipment-id=" + data + ">Delete</button>";
+                        }
+                    }
+                ]
+            });
+
+            $("#equipment").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Delete?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/equipment/" + button.attr("data-equipment-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
