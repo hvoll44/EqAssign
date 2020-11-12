@@ -163,13 +163,16 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\Api\EquipmentController.cs" />
+    <Compile Include="Controllers\Api\InvoicesController.cs" />
     <Compile Include="Controllers\Api\NewRentalsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InvoicesController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\EquipmentDto.cs" />
+    <Compile Include="Dtos\InvoiceDto.cs" />
     <Compile Include="Dtos\MembershiptTypeDto.cs" />
     <Compile Include="Dtos\ModelsDto.cs" />
     <Compile Include="Dtos\NewRentalDto.cs" />
@@ -185,9 +188,22 @@
     <Compile Include="Migrations\202011092111044_populateTables.designer.cs">
       <DependentUpon>202011092111044_populateTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011122057362_AddedInvoiceModel.cs" />
+    <Compile Include="Migrations\202011122057362_AddedInvoiceModel.designer.cs">
+      <DependentUpon>202011122057362_AddedInvoiceModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011122209545_LinksCustomersToInvoices.cs" />
+    <Compile Include="Migrations\202011122209545_LinksCustomersToInvoices.designer.cs">
+      <DependentUpon>202011122209545_LinksCustomersToInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011122217145_LinksEquipmentToInvoices.cs" />
+    <Compile Include="Migrations\202011122217145_LinksEquipmentToInvoices.designer.cs">
+      <DependentUpon>202011122217145_LinksEquipmentToInvoices.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Equipment.cs" />
+    <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\ModelType.cs" />
@@ -196,7 +212,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\EquipmentFormViewModel.cs" />
-    <Compile Include="ViewModels\RandomEquipmentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumin.css" />
@@ -509,7 +524,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Equipment\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Customers\Details.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
@@ -528,6 +542,8 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Rentals\New.cshtml" />
+    <Content Include="Views\Rentals\Index.cshtml" />
+    <Content Include="Views\Invoices\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -549,6 +565,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011092111044_populateTables.resx">
       <DependentUpon>202011092111044_populateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011122057362_AddedInvoiceModel.resx">
+      <DependentUpon>202011122057362_AddedInvoiceModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011122209545_LinksCustomersToInvoices.resx">
+      <DependentUpon>202011122209545_LinksCustomersToInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011122217145_LinksEquipmentToInvoices.resx">
+      <DependentUpon>202011122217145_LinksEquipmentToInvoices.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,10 +2,6 @@
 using EqAssign.Dtos;
 using EqAssign.DTOs;
 using EqAssign.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace EqAssign.App_Start
 {
@@ -18,6 +14,8 @@ namespace EqAssign.App_Start
             Mapper.CreateMap<Equipment, EquipmentDto>();
             Mapper.CreateMap<MembershipType, MembershiptTypeDto>();
             Mapper.CreateMap<ModelType, ModelsDto>();
+            Mapper.CreateMap<Rental, NewRentalDto>();
+            Mapper.CreateMap<Invoice, InvoiceDto>();
 
 
             // Dto to Domain

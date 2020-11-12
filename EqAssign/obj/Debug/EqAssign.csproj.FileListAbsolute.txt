@@ -257,3 +257,6 @@ C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.csproj.CoreCom
 C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.csproj.CopyComplete
 C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.dll
 C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.pdb
+C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.Migrations.AddedInvoiceModel.resources
+C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.Migrations.LinksCustomersToInvoices.resources
+C:\Users\hvoll\source\GitHub\EqAssign\EqAssign\obj\Debug\EqAssign.Migrations.LinksEquipmentToInvoices.resources

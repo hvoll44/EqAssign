@@ -22,11 +22,11 @@ namespace EqAssign.Models
 
         [Required]
         [Display(Name = "Manufacture Date")]
-        public Nullable<DateTime> ManufactureDate { get; set; }
+        public DateTime? ManufactureDate { get; set; }
 
         [Required]
         [Display(Name = "Purchase Date")]
-        public Nullable<DateTime> PurchaseDate { get; set; }
+        public DateTime? PurchaseDate { get; set; }
 
         [Required]
         [Range(1,20)]

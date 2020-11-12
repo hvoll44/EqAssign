@@ -1,5 +1,4 @@
-﻿using EqAssign.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace EqAssign.Models
 {
@@ -11,6 +10,7 @@ namespace EqAssign.Models
         public DbSet<MembershipType> MembershipTypes { get; set; }
         public DbSet<ModelType> ModelTypes { get; set; }
         public DbSet<Rental> Rentals { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
 
         public MyDBContext()
         {

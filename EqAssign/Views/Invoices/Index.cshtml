@@ -1,0 +1,49 @@
+﻿@model IEnumerable<EqAssign.Models.Invoice>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Invoices</h2>
+<table id="invoice" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>Customer</th>
+            <th>Equipment</th>
+            <th>Date Rented</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            var table = $("#invoice").DataTable({
+                ajax: {
+                    url: "/api/invoices",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        data: "id"
+                    },
+                    {
+                        data: "customer.name"
+                    },
+                    {
+                        data: "equipment.name"
+                    },
+                    {
+                        data: "dateRented"
+                    }
+                ]
+            });
+        });
+    </script>
+}

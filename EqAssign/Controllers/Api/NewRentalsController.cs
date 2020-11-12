@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using EqAssign.Dtos;
-using EqAssign.DTOs;
 using EqAssign.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace EqAssign.Controllers.Api
@@ -19,6 +15,14 @@ namespace EqAssign.Controllers.Api
         {
             _context = new MyDBContext();
         }
+
+
+        // GET /api/rentals
+        public IEnumerable<NewRentalDto> GetRentals()
+        {
+            return _context.Rentals.ToList().Select(Mapper.Map<Rental, NewRentalDto>);
+        }
+
 
         [HttpPost]
         public IHttpActionResult CreateNewRentals(NewRentalDto newRental)
@@ -33,7 +37,7 @@ namespace EqAssign.Controllers.Api
             {
                 if (equipment.Available == 0)
                     return BadRequest("Equipment not available.");
-                
+
                 equipment.Available--;
 
                 var rental = new Rental
@@ -44,6 +48,16 @@ namespace EqAssign.Controllers.Api
                 };
 
                 _context.Rentals.Add(rental);
+
+
+                var invoice = new Invoice
+                {
+                    CustomerId = customer.Id,
+                    EquipmentId = equipment.Id,
+                    DateRented = DateTime.Now
+                };
+
+                _context.Invoices.Add(invoice);
             }
 
             _context.SaveChanges();

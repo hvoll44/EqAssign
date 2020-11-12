@@ -1,9 +1,5 @@
-﻿using EqAssign.Models;
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace EqAssign.Dtos
 {
@@ -24,13 +20,15 @@ namespace EqAssign.Dtos
 
         [Required]
         public DateTime? ManufactureDate { get; set; }
-        
+
         [Required]
         public DateTime? PurchaseDate { get; set; }
 
         [Required]
         [Range(1, 20)]
         public int Stock { get; set; }
+
+        public int Available { get; set; }
 
     }
 }

@@ -1,12 +1,7 @@
-﻿using System;
-using System.Data.Entity;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Routing;
-using EqAssign.Models;
+﻿using EqAssign.Models;
 using EqAssign.ViewModels;
+using System.Linq;
+using System.Web.Mvc;
 
 namespace EqAssign.Controllers
 {
@@ -22,7 +17,7 @@ namespace EqAssign.Controllers
         {
             _context.Dispose();
         }
-        
+
         public ViewResult Index()
         {
             return View();
@@ -41,7 +36,7 @@ namespace EqAssign.Controllers
         public ActionResult New()
         {
             var modelTypes = _context.ModelTypes.ToList();
-            
+
             var viewModel = new EquipmentFormViewModel
             {
                 Equipment = new Equipment(),
@@ -67,8 +62,8 @@ namespace EqAssign.Controllers
 
                 return View("EquipmentForm", viewModel);
             }
-            
-            
+
+
             if (equipment.Id == 0)
                 _context.Equipment.Add(equipment);
             else
@@ -103,25 +98,6 @@ namespace EqAssign.Controllers
             ViewBag.PageTitle = "Edit";
 
             return View("EquipmentForm", viewModel);
-        }
-
-        // GET: Equipment/Random
-        public ActionResult Random()
-        {
-            var equipment = new Equipment() { Name = "Sensor 52" };
-            var customers = new List<Customer>
-            {
-                new Customer { Name = "John Smith"},
-                new Customer { Name = "Bob Dole"}
-            };
-
-            var viewModel = new RandomEquipmentViewModel
-            {
-                Equipment = equipment,
-                Customers = customers
-            };
-
-            return View(viewModel);
         }
     }
 }
