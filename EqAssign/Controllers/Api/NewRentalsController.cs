@@ -4,6 +4,7 @@ using EqAssign.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Http;
 
 namespace EqAssign.Controllers.Api
@@ -64,5 +65,36 @@ namespace EqAssign.Controllers.Api
 
             return Ok();
         }
+
+
+        // DELETE /api/rentals/1
+        [HttpDelete]
+        public void DeleteRental(int id)
+        {
+            var rentalInDb = _context.Rentals.SingleOrDefault(r => r.Id == id);
+
+            if (rentalInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            //var equipment = rentalInDb.Equipment;
+            //equipment.Available++;
+
+            var invoiceInDb = _context.Invoices.SingleOrDefault(i => i.Id == id);
+
+            if (invoiceInDb == null)
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+
+            _context.Invoices.Remove(invoiceInDb);
+            invoiceInDb.DateReturned = DateTime.Now;
+
+            _context.Invoices.Add(invoiceInDb);
+            _context.SaveChanges();
+
+            _context.Rentals.Remove(rentalInDb);
+            _context.SaveChanges();
+
+
+        }
+
     }
 }

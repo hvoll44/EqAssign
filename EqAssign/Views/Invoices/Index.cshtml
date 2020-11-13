@@ -14,6 +14,8 @@
             <th>Customer</th>
             <th>Equipment</th>
             <th>Date Rented</th>
+            <th>Date Returned</th>
+            <th>Returned</th>
         </tr>
     </thead>
     <tbody>
@@ -41,9 +43,35 @@
                     },
                     {
                         data: "dateRented"
+                    },
+                    {
+                        data: "dateReturned"
+                    },
+                    {
+                        data: "id",
+                        render: function (data) {
+                            return "<button class='btn-link js-delete' data-invoice-id=" + data + ">Return</button>";
+                        }
                     }
                 ]
             });
+
+            $("#invoice").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Has the returns checklist been completed?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/invoices/" + button.attr("data-invoice-id"),
+                            method: "PUT",
+                            success: function () {
+                                table.row(button.parents("tr")).draw();
+                            }
+                        });
+                    }
+                });
+            });
+
         });
     </script>
 }
