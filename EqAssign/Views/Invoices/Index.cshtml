@@ -59,15 +59,27 @@
             $("#invoice").on("click", ".js-delete", function () {
                 var button = $(this);
 
-                bootbox.confirm("Has the returns checklist been completed?", function (result) {
-                    if (result) {
-                        $.ajax({
-                            url: "/api/invoices/" + button.attr("data-invoice-id"),
-                            method: "PUT",
-                            success: function () {
-                                table.row(button.parents("tr")).draw();
-                            }
-                        });
+                bootbox.confirm({
+                    title: "Return Equipment",
+                    message: "Has the returns checklist been completed?",
+                    buttons: {
+                        cancel: {
+                            label: 'Cancel'
+                        },
+                        confirm: {
+                            label: 'Confirm'
+                        }
+                    },
+                    callback: function (result) {
+                        if (result) {
+                            $.ajax({
+                                url: "/api/invoices/" + button.attr("data-invoice-id"),
+                                method: "PUT",
+                                success: function () {
+                                    table.row(button.parents("tr")).draw();
+                                }
+                            });
+                        }
                     }
                 });
             });

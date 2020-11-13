@@ -73,7 +73,14 @@ namespace EqAssign.Controllers.Api
 
             Mapper.Map(invoiceDto, invoiceInDb);
 
+            var equipment = _context.Equipment.Single(
+                e => e.Id == invoiceInDb.EquipmentId);
+
+            equipment.Available++;
+
             _context.SaveChanges();
+
+
         }
 
     }
